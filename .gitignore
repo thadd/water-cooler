@@ -3,3 +3,4 @@ log
 tmp
 db/*.sqlite3
 doc/app
+.DS_Store
