@@ -1,0 +1,62 @@
+- content_for :head_extras do
+  = javascript_include_tag 'soundmanager2'
+  = javascript_include_tag 'sound'
+  = javascript_include_tag 'chat_room'
+
+  :javascript
+    jQuery(function() {
+       setTimeout(function(){#{remote_function(:url => chat_room_messages_url(@chat_room, :last_id =>  @current_highest_message), :method => :get)}}, 2000);
+      });
+
+  = periodically_call_remote(:url => chat_room_memberships_url(@chat_room), :method => :get, :frequency => '5', :update => 'member_list_box')
+  = periodically_call_remote(:url => participant_notifications_url(whoami), :method => :get, :frequency => '5')
+
+- content_for :sidebar do
+  #member_list_box
+    = render :partial => '/memberships/member_list'
+
+  %p
+    = link_to 'Leave room', chat_room_membership_path(@chat_room, @membership), :method => :delete
+    |
+    = link_to 'Chat room list', chat_rooms_path
+    %br
+
+    - if whoami_owns_room?(@chat_room)
+      - if @chat_room.locked?
+        = link_to 'Unlock', chat_room_path(@chat_room, :chat_room => {:locked => false}), :method => :put
+      - else
+        = link_to 'Lock', chat_room_path(@chat_room, :chat_room => {:locked => true}), :method => :put
+      |
+
+    = link_to 'Transcript', transcript_path(@chat_room)
+
+  #notification_list_box
+    = render :partial => '/notifications/notification_list'
+
+  #keyword_list_box
+    = render :partial => '/keywords/keyword_list'
+
+  #sound_links
+    = sound_links
+
+- content_for :header_bar do
+  #room_bar
+    %ul
+      - for membership in @my_memberships do
+        %li{:class => current?(membership), :id => "room_#{membership.chat_room.id}"}
+          = link_to truncate(h(membership.chat_room.name), :length => 20), membership.chat_room, :class => notification?(membership)
+
+#message_data{:style => 'display:none'}
+  #current_chat_room= @chat_room
+  #current_highest_message= @current_highest_message
+
+#message_list_box
+  #message_list_container
+    = render :partial => '/messages/message_list'
+
+#new_message
+  - remote_form_for(:message, :url => chat_room_messages_path(@chat_room), :html => {:name => 'chat_form'}, :loading => "clearInputText()") do |f|
+    %label{:for => "new_message_content"} New message:
+    = f.text_area :content, :rows => 3, :cols => 50, :id => 'new_message_input'
+    = f.submit "Send", :class => 'button', :id => "send_message_button"
+    %img{:src => "/images/loading.gif", :id => "loading_icon", :alt => "loading"}

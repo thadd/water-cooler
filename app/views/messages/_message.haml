@@ -1,0 +1,7 @@
+%li{:id => "message_#{message.id}", :class => note?(message), :title => message.date}
+  .message_author
+    %span.timestamp
+      == [#{message.created_at.strftime("%H:%M")}]
+    == #{truncate(h(message.participant.name), :length => 20)}:
+  .message_text
+    = auto_link(sanitize(make_textile(message.content || '')))

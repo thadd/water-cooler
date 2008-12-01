@@ -1,0 +1,41 @@
+- content_for :head_extras do
+  = periodically_call_remote(:url => participant_notifications_url(whoami), :method => :get, :frequency => '5')
+
+%h1 Chat rooms on this server
+
+= link_to 'New chat_room', new_chat_room_path
+
+#notification_list_box
+  = render :partial => '/notifications/notification_list'
+
+%h3 Active rooms
+
+- for chat_room in @active_chat_rooms
+  .chat_room_box
+    %div{:class => name_classes(chat_room)}
+      = link_to h(chat_room.name), chat_room
+
+    .room_member_list
+      = member_list_spans(chat_room)
+
+    - if whoami_owns_room?(chat_room)
+      .room_actions
+        - if chat_room.locked?
+          = link_to 'Unlock', chat_room_path(chat_room, :chat_room => {:locked => false}), :method => :put
+        - else
+          = link_to 'Lock', chat_room_path(chat_room, :chat_room => {:locked => true}), :method => :put
+        |
+        = link_to 'Delete', chat_room, :confirm => delete_room_warning, :method => :delete
+        |
+        = link_to 'Archive', transcripts_path(:id => chat_room, :chat_room => chat_room), :method => :post
+        |
+        = link_to 'Transcript', transcript_path(chat_room)
+
+%h3 Archived rooms
+
+%ul#archived_chat_room_list
+  - for chat_room in @inactive_chat_rooms
+    %li
+      %div{:class => name_classes(chat_room)}
+        = link_to h(chat_room.name), transcript_path(chat_room)
+        == (#{link_to 'unarchive', transcript_path(chat_room), :method => :delete})

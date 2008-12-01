@@ -1,0 +1,4 @@
+%p
+  = link_to_remote "Turn #{@room_state} room sounds", :url => {:controller => :session_requests, :action => :sounds, :params => {:room_sounds => @room_state}}, :method => :post
+  %br
+  = link_to_remote "Turn #{@notification_state} notification sounds", :url => {:controller => :session_requests, :action => :sounds, :params => {:notification_sounds => @notification_state}}, :method => :post

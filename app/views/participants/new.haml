@@ -1,0 +1,45 @@
+- content_for :head_extras do
+  = javascript_include_tag 'timezone'
+
+- # LDAP login form
+- if AppConfig.use_ldap
+  - form_tag(ldap_path, :id => 'ldap_form') do |f|
+    %fieldset
+      %legend Enter LDAP credentials
+
+      %ol
+        %li
+          %label{:for => "participant_username"} Username
+          = text_field_tag 'participant[username]', '', :id => 'participant_username', :size => 30
+
+        %li
+          %label{:for => "participant_password"} Password
+          = password_field_tag 'participant[password]', '', :id => 'participant_password', :size => 30
+
+        %li= submit_tag "Log in", :class => 'button'
+
+- # OpenID login form
+- if AppConfig.use_openid
+  - form_tag(openid_path, :id => 'openid_form') do |f|
+    %fieldset
+      %legend Enter OpenID information
+
+      %ol
+        %li
+          %label{:for => "openid_url"} OpenID URL
+          = text_field_tag 'openid_url', 'http://', :class => 'openid', :size => 30
+
+        %li= submit_tag "Log in", :class => 'button'
+
+- # Dummy login form for testing
+- if AppConfig.use_dummy_login
+  - form_tag(participants_path, :id => 'dummy_form') do |f|
+    %fieldset
+      %legend DEVELOPMENT
+
+      %ol
+        %li
+          %label{:for => "participant_username"} Username
+          = text_field_tag 'participant[username]', '', :id => 'participant_username', :size => 30
+
+        %li= submit_tag "Log in", :class => 'button'

@@ -1,0 +1,5 @@
+jQuery('#room_bar a').removeClass("notification_waiting");
+<% for note in @notifications do -%>
+  jQuery('#room_<%= note.message.chat_room.id %> a').addClass("notification_waiting");
+<% end -%>
+jQuery('#notification_list_box').html('<%= escape_javascript(render :partial => '/notifications/notification_list') %>');

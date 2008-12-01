@@ -1,0 +1,13 @@
+- form_for(@chat_room) do |f|
+  = f.error_messages
+
+  %fieldset
+    %legend New chat room
+
+    %ol
+      %li
+        %label{:for => "chat_room_name"} Name
+        = f.text_field :name
+
+      %li
+        = f.submit "Create", :class => 'button'

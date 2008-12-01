@@ -1,0 +1,10 @@
+%h3 Room members
+
+%ul.room_member_list
+  - for membership in @memberships
+    %li{:class => active?(membership), :title => h(membership.participant.username)}
+      = h(membership.participant.name)
+      - if whoami_owns_room?(membership.chat_room) && membership.participant != whoami
+        == (#{link_to_remote 'evict', :url => chat_room_membership_url(membership.chat_room, membership), :method => :delete})
+      - if membership.participant.away?
+        %span.away_message= h(membership.participant.active)

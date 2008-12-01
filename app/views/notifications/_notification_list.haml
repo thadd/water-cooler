@@ -1,0 +1,18 @@
+%h3 Notifications
+
+%ul#notification_list
+  - if @notifications.empty?
+    %li None
+
+  - for notification in @notifications do
+    %li
+      - if notification.keyword.text =~ /^from:/
+        = h(notification.message.participant.name)
+        spoke in
+        = link_to(h(notification.message.chat_room.name), notification.message.chat_room)
+      - else
+        == "#{h(notification.keyword.text)}"
+        mentioned by
+        = h(notification.message.participant.name)
+        in
+        = link_to(h(notification.message.chat_room.name), notification.message.chat_room)

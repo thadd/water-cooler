@@ -1,0 +1,13 @@
+%h3 Keywords
+
+(<a href="javascript:void(0)" id="add_keyword_link">add</a>)
+
+- remote_form_for(:keyword, :url => participant_keywords_path(whoami), :html => {:name => 'keyword_form', :style => 'display:none'}) do |f|
+  = f.text_field :text, :size => 12, :id => 'new_keyword_input'
+  = f.submit "Save", :class => 'button', :id => "save_keyword_button"
+  or
+  <a href="javascript:void(0)" id="cancel_add_keyword">Cancel</a>
+
+%ul#keyword_list
+  - for keyword in @keywords do
+    = render :partial => keyword

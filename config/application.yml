@@ -1,0 +1,107 @@
+# This document provides application-wide settings. Set up your configuration
+# for the various Rails modes (development, production, don't change test).
+
+development:
+  # Set this to true to enable dummy login for testing. This should NEVER be
+  # enabled in the production environment!
+  use_dummy_login: true
+
+  # Set this to true if you want to support OpenID authentication
+  use_openid: true
+
+  # Add OpenID identies that will be granted "admin" privileges. 
+  #openid_admins: ["http://example.com/"]
+
+  # Add allowed OpenIDs to this list if you only want certain people to have
+  # access. Ensure that you use the "normalized" OpenID URL here. You can get
+  # the normalized URL using irb:
+  #  require 'openid'
+  #  OpenID::normalize_url("http://example.com")
+  #openid_allowed_urls: ["http://example.com/"]
+
+  # Add forbidden OpenIDs to this list if you only want to prevent certain
+  # people access. Ensure that you use the "normalized" OpenID URL here. You
+  # can get the normalized URL using irb:
+  #  require 'openid'
+  #  OpenID::normalize_url("http://example.com")
+  #openid_banned_urls: ["http://example.com/"]
+
+  # Set this to true if you want to support LDAP authentication
+  #use_ldap: true
+
+  # The following settings are used to specify the LDAP server and its
+  # configuration.
+  #ldap_host: 'ldap.example.com'
+  #ldap_port: 389
+
+  # These strings are appended before and after the user ID when attempting to
+  # authenticate using an LDAP server.
+  #ldap_user_pre_dn: "uid="
+  #ldap_user_post_dn: ",cn=users,dc=example,dc=com"
+
+  # To grant users admin privileges based on an LDAP group, set the group's DN
+  # here.
+  #ldap_admin_group_dn: "cn=administrators,cn=groups,dc=example,dc=com"
+
+  # This tells us what LDAP type to search for when looking for the group DN
+  #ldap_admin_group_type: "objectClass=posixgroup"
+
+  # This tells us what record in the group should match the user ID
+  #ldap_admin_group_field: "memberUid"
+
+  # Enter the URL for bug references. If a user types "bug #123", it will be
+  # automatically hyperlinked to this URL replacing "%s" with the bug number.
+  link_bugs: true
+  bug_url: "http://thadd.lighthouseapp.com/projects/20676-water-cooler/tickets/%s"
+
+  # Enter the URL for revision numbers. If a user types "rev 123", it will be
+  # automatically hyperlinked to this URL replacing "%s" with the revision
+  # number.
+  link_revs: true
+  rev_url: "http://github.com/thadd/water-cooler/commit/%s"
+
+test:
+  use_dummy_login: false
+
+  use_openid: true
+  #openid_admins: ["http://example.com/"]
+  #openid_allowed_urls: ["http://example.com/"]
+  #openid_banned_urls: ["http://example.com/"]
+
+  #use_ldap: true
+  #ldap_host: 'ldap.example.com'
+  #ldap_port: 389
+  #ldap_user_pre_dn: "uid="
+  #ldap_user_post_dn: ",cn=users,dc=example,dc=com"
+  #ldap_admin_group_dn: "cn=administrators,cn=groups,dc=example,dc=com"
+  #ldap_admin_group_type: "objectClass=posixgroup"
+  #ldap_admin_group_field: "memberUid"
+
+  link_bugs: true
+  bug_url: "http://thadd.lighthouseapp.com/projects/20676-water-cooler/tickets/%s"
+
+  link_revs: true
+  rev_url: "http://github.com/thadd/water-cooler/commit/%s"
+
+production:
+  use_dummy_login: false
+
+  use_openid: true
+  #openid_admins: ["http://example.com/"]
+  #openid_allowed_urls: ["http://example.com/"]
+  #openid_banned_urls: ["http://example.com/"]
+
+  #use_ldap: true
+  #ldap_host: 'ldap.example.com'
+  #ldap_port: 389
+  #ldap_user_pre_dn: "uid="
+  #ldap_user_post_dn: ",cn=users,dc=example,dc=com"
+  #ldap_admin_group_dn: "cn=administrators,cn=groups,dc=example,dc=com"
+  #ldap_admin_group_type: "objectClass=posixgroup"
+  #ldap_admin_group_field: "memberUid"
+
+  link_bugs: true
+  bug_url: "http://thadd.lighthouseapp.com/projects/20676-water-cooler/tickets/%s"
+
+  link_revs: true
+  rev_url: "http://github.com/thadd/water-cooler/commit/%s"

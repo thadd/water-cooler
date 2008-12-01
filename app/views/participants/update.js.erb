@@ -1,0 +1,5 @@
+jQuery('#status_box').slideUp(300);
+jQuery('#status_input').val('');
+jQuery('#available').attr('checked','');
+jQuery('#status_message_box').html('<%= escape_javascript(render :partial => '/shared/status_message') %>');
+jQuery('#change_status_link').click(changeStatus);

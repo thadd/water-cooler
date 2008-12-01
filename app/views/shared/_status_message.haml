@@ -1,0 +1,5 @@
+Your status is
+%span.available_status
+  == "#{whoami.active.blank? ? "Available" : h(whoami.active)}".
+
+(<a href="javascript:void(0)" id="change_status_link">change</a>)

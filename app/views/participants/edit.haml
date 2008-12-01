@@ -1,0 +1,14 @@
+- form_for(@participant) do |f|
+  = f.error_messages
+  = hidden_field_tag 'form_type', 'nickname'
+
+  %fieldset
+    %legend Edit your information
+
+    %ol
+      %li
+        %label{:for => "participant_name"} Nickname
+        = f.text_field :name
+
+      %li
+        = f.submit "Save", :class => 'button', :id => 'submit_button'

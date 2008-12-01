@@ -1,0 +1,7 @@
+jQuery('form[name=keyword_form]').slideUp(300);
+jQuery('#new_keyword_input').val('');
+
+<% if @keyword -%>
+  jQuery('#keyword_list').append('<%= escape_javascript(render :partial => @keyword) %>');
+  jQuery('#keyword_<%= @keyword.id %>').show("highlight", {color:"#ffff00"}, 500);
+<% end -%>

@@ -1,0 +1,3 @@
+%li[keyword]
+  = h(keyword.text)
+  == (#{link_to_remote 'delete', :url => participant_keyword_url(whoami, keyword), :method => :delete})

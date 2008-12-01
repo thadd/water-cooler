@@ -1,0 +1,424 @@
+body {
+  background-color: #eee;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+* { 
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+.flash_notice {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0;
+  border-bottom: 2px solid #565;
+  color: #dfd;
+  background-image: url(/images/flash_bg.png);
+  text-indent: 50px;
+  display: block;
+}
+
+#main_container {
+  margin-top: 1em;
+  margin-bottom: 60px;
+  padding: 14px;
+}
+
+h1 {
+  font-size: 16pt;
+}
+
+#main_container h3 {
+  clear: both;
+}
+
+#message_list_box {
+  border: 3px solid #999;
+  margin-right: 250px;
+}
+
+#message_list_container {
+  padding: 0;
+  margin: 0;
+  height: 350px;
+  overflow: auto;
+}
+
+#message_list {
+  padding: 0;
+  margin: 0;
+}
+
+#message_list li.note {
+  background-color: #eec;
+}
+
+#message_list li {
+  list-style: none;
+  margin: 0;
+  padding: 3px 10px;
+}
+
+.message_author {
+  width: 150px;
+  float: left;
+  overflow: hidden;
+  clear: left;
+  text-align: right;
+  color: #363;
+}
+
+.message_text {
+  padding-left: 155px;
+}
+
+#message_list li {
+  background-color: #dbdbdb;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+#message_list li.note {
+  background-color: #eec;
+}
+
+#new_message {
+  padding: 15px 0;
+}
+
+#new_message label, #new_message input {
+  vertical-align: top;
+}
+
+#new_message label {
+  font-style: italic;
+}
+
+#sidebar .button {
+  border: 0;
+  padding: 0;
+  background: none;
+  color: #000;
+  text-decoration: underline;
+}
+
+.button {
+  background-color: #ccc;
+  border-top: 2px solid #ddd;
+  border-left: 2px solid #ddd;
+  border-right: 2px solid #999;
+  border-bottom: 2px solid #999;
+  padding: 2px 20px;
+}
+
+.showme {
+  border: 4px solid red;
+}
+
+#loading_icon {
+  display: none;
+  vertical-align: top;
+}
+
+#sidebar {
+  width: 240px;
+  float: right;
+  margin: 14px 5px 0px 5px;
+  padding: 5px;
+}
+
+#sidebar a, #sidebar h3, #sidebar li, #sidebar input {
+  font-size: 85%;
+}
+
+#sidebar h3 {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  display: inline;
+}
+
+#sidebar ul {
+  margin: 10px 0 20px 0;
+  padding-left: 1.5em;
+}
+
+#sidebar li {
+  background-color: #eee;
+  list-style: square;
+}
+
+#sidebar form {
+  margin: 5px;
+}
+
+.chat_room_box {
+  width: 300px;
+  float: left;
+  clear: both;
+  border: 4px solid #777;
+  background-color: #ddd;
+  margin: 20px;
+  padding: 10px;
+}
+
+.is_member:after {
+  content: "*";
+  color: green;
+}
+
+
+#room_bar {
+  height: 50px;
+  background-color: #bbd;
+  border-bottom: 1px solid #777;
+  background-image: url(/images/glass.png);
+  background-repeat: repeat-x;
+}
+
+#room_bar ul {
+  height: 50px;
+  border-left: 1px solid #99b;
+  padding: 0;
+  margin: 0 50px;
+}
+
+#room_bar li {
+  position: relative;
+  list-style: none;
+  float: left;
+  height: 50px;
+  width: 150px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  border-right: 1px solid #99b;
+  background-color: #bbd;
+  background-image: url(/images/glass.png);
+  background-repeat: repeat-x;
+}
+
+#room_bar a {
+  text-decoration: none;
+  height: 65px;
+  color: #222;
+  font-size: 16pt;
+  font-family: 'Trebuchet MS';
+  display: block;
+  padding: 8px 3px 0 3px;
+}
+
+#room_bar a:hover {
+  background: none;
+}
+
+#room_bar li:hover {
+  background-color: #aac;
+}
+
+#room_bar li.current {
+  background-color: #5b5;
+}
+
+#room_bar li.current a {
+}
+
+.notification_waiting:before {
+  content: "*";
+  color: red;
+}
+
+.notification_waiting:after {
+  content: "*";
+  color: red;
+}
+
+span.notification_waiting {
+  position: absolute;
+  top: -4px;
+  left: -2px;
+  color: red;
+  font-size: 40pt;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  height: 60px;
+  background-color: #555;
+  color: #ddd;
+  width: 100%;
+  text-align: center;
+  padding: 4px 0;
+  font-size: 9pt;
+}
+
+#footer a {
+  color: #aad;
+}
+
+#footer * {
+  font-size: 9pt;
+}
+
+#status_box {
+  position: absolute;
+  bottom: 60px;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0 20px 0;
+  border-top: 2px solid #565;
+  border-bottom: 1px solid #222;
+  background-color: #575;
+}
+
+#status_box form {
+  margin: 0 50px;
+  padding: 0;
+}
+
+#status_box * {
+  margin: 0;
+  font-size: 85%;
+}
+
+#sidebar #keyword_list, #sidebar #room_member_list, #sidebar #notification_list {
+  max-height: 150px;
+  overflow: auto;
+}
+
+#sidebar #member_list_box span {
+  font-size: 85%;
+}
+
+#sidebar ul li, #sidebar ul a {
+  line-height: 130%;
+}
+
+.away_message {
+  color: #888;
+}
+
+#notification_list_box {
+  clear: both;
+}
+
+fieldset {
+  background-color: #ddd;
+  border: 1px solid #bbb;
+  float: left;
+  clear: both;
+  padding: 20px 10px 10px 10px;
+  margin-bottom: 30px;
+}
+
+legend {
+  border: 1px solid #bbb;
+  padding: 3px 15px;
+  margin: 0 auto;
+  font-size: 125%;
+  font-weight: bold;
+  background-color: #ccc;
+  height: 20px;
+  text-align: center;
+}
+
+fieldset ol {
+  margin: 0;
+  padding: 0;
+}
+
+fieldset ol li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+fieldseld label, fieldset input {
+  display: block;
+}
+
+fieldset input.button {
+  margin-bottom: 0;
+}
+
+fieldset input {
+  margin-bottom: 15px;
+}
+
+.locked {
+  padding-left: 18px;
+  background-image: url(/images/locked.png);
+  background-repeat: no-repeat;
+  background-position: 0 2px;
+}
+
+.room_member_list .active {
+  font-style: normal;
+}
+
+.room_member_list {
+  font-style: italic;
+}
+
+.message_text p {
+  display: inline;
+}
+
+.timestamp {
+  color: #999;
+  font-size: 85%;
+  display: block;
+  float: left;
+}
+
+.openid {
+  background: url(/images/openid.gif) no-repeat #fff 5px;
+  padding-left: 25px;
+}

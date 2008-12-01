@@ -1,0 +1,54 @@
+!!! XML
+!!!
+%html{html_attrs}
+  %head
+    %meta{'http-equiv' => "content-type", :content => "text/html;charset=UTF-8"}
+    %title= title_with_chat_room_name
+    = javascript_include_tag :defaults
+    = javascript_include_tag 'jquery'
+    = javascript_include_tag 'jquery-ui'
+    = javascript_include_tag 'jquery.scrollTo'
+
+    = javascript_include_tag 'common'
+
+    = stylesheet_link_tag 'application'
+
+    = yield :head_extras
+
+  %body
+    = yield :header_bar
+
+    - if flash[:notice]
+      .temporary{:style => "display:none"}
+        .flash_notice= h(flash[:notice])
+
+    #sidebar
+      = yield :sidebar
+
+    #main_container
+      = yield
+
+    - unless current_page? new_participant_path
+      #status_box{:style => "display:none"}
+        - remote_form_for(:participant, :url => participant_path(whoami), :method => :put) do |f|
+          Away message:
+          = f.text_field :active, :size => 12, :id => 'status_input'
+          = hidden_field_tag 'form_type', 'status'
+          = check_box_tag 'available'
+          Available
+          = f.submit "Save", :class => 'button', :id => "save_status_button"
+          or
+          <a href="javascript:void(0)" id="cancel_change_status">Cancel</a>
+      #footer
+        Logged in as
+        == #{h(@whoami.username)} #{" (admin)" if @whoami.admin?}.
+        You are known as
+        == "#{h(@whoami.name)}"
+        == (#{link_to('change', edit_participant_path(@whoami))}).
+
+        #status_message_box
+          = render :partial => '/shared/status_message'
+
+        = link_to 'Chat room list', chat_rooms_path
+        |
+        = link_to 'Logout', new_participant_path

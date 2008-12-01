@@ -1,0 +1,20 @@
+<% if @member_should_be_evicted -%>
+  document.location='<%= chat_rooms_path %>';
+<% else -%>
+  <% for message in @messages -%>
+    jQuery('#message_list').append('<%= escape_javascript(render :partial => message) %>');
+  <% end -%>
+
+  <% unless @messages.empty? -%>
+    jQuery('#message_list_container').scrollTo(jQuery('#message_list > li:last-child'), 500);
+    <% unless @should_play_notification_sound || (! room_sounds_enabled?) -%>
+      soundManager.play('notify_pop');
+    <% end -%>
+  <% end -%>
+
+  <% if @should_play_notification_sound && notification_sounds_enabled? -%>
+    soundManager.play('notify_tweet');
+  <% end -%>
+<% end -%>
+
+setTimeout(function(){<%= remote_function(:url => chat_room_messages_url(@chat_room, :last_id => @current_highest_message), :method => :get) %>}, 2000);
