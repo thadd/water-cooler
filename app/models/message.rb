@@ -31,7 +31,7 @@ class Message < ActiveRecord::Base
   after_save :notify_participants
 
   named_scope :limit, lambda {|msgs|
-    {:limit => msgs}
+    {:limit => msgs, :order => 'id DESC'}
   }
   named_scope :since, lambda {|time|
     {:conditions => ['created_at > ?', time]}
