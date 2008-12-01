@@ -55,6 +55,8 @@ class LdapsController < ApplicationController
         ldap.search({:base => AppConfig.ldap_admin_group_dn, :filter => AppConfig.ldap_admin_group_type}) do |entry|
           @participant.admin = entry[AppConfig.ldap_admin_group_field].include?(@participant.username)
         end
+      else
+        raise Net::LDAP::LdapError.new("Login failed")
       end
     rescue Net::LDAP::LdapError
       flash[:notice] = "Error: #{$!.message}"
