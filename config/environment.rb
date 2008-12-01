@@ -49,8 +49,8 @@ Rails::Initializer.run do |config|
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :session_key => '_adcon_chat_session',
-    :secret      => 'c5519cae320bd2e5584cb0dea43519b8a926f6dee00b04b812e656d4d5a2dbb51b603845db1d730810582ee14a09196ac3ba24859de4318f4b92d7ba327beff4'
+    :session_key => '_water_cooler_chat_session',
+    :secret      => 'c5519cae320b8d2e5584cb0dea43519b8a926f6dee00b04b812e656d4d5a2dbb51b603845db1d730810582ee14a09196ac3ba24859de4318f4b92d7ba327beff4'
   }
 
   # Use the database for sessions instead of the cookie-based default,
