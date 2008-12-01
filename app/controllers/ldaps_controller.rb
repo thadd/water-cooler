@@ -45,9 +45,10 @@ class LdapsController < ApplicationController
       params[:participant][:username] +
       AppConfig.ldap_user_post_dn
 
-    ldap = Net::LDAP.new(:host => AppConfig.ldap_host,
-                         :port => AppConfig.ldap_port,
-                         :auth => {:username => ldap_dn, :password => params[:participant][:password]})
+    ldap = Net::LDAP.new
+    ldap.host = AppConfig.ldap_host
+    ldap.port = AppConfig.ldap_port
+    ldap.auth ldap_dn, params[:participant][:password]
 
     begin
       if ldap.bind
