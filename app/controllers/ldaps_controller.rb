@@ -52,7 +52,7 @@ class LdapsController < ApplicationController
 
     begin
       if ldap.bind
-        ldap.search(AppConfig.ldap_admin_group_dn, 0, AppConfig.ldap_admin_group_type) do |entry|
+        ldap.search({:base => AppConfig.ldap_admin_group_dn, :filter => AppConfig.ldap_admin_group_type}) do |entry|
           @participant.admin = entry[AppConfig.ldap_admin_group_field].include?(@participant.username)
         end
       end
