@@ -161,7 +161,7 @@ describe ChatRoomsController do
         msgs << mock("Message-#{i}")
       end
       @msg_scope.should_receive(:since).and_return([])
-      @msg_scope.should_receive(:limit).with(50).and_return(msgs)
+      @msg_scope.should_receive(:limit).with(50).and_return(msgs.reverse)
 
       get :show, :id => 1
 

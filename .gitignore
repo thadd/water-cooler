@@ -2,5 +2,7 @@ coverage
 log
 tmp
 db/*.sqlite3
+db/development_structure.sql
+db/schema.rb
 doc/app
 .DS_Store

@@ -77,7 +77,7 @@ class ChatRoomsController < ApplicationController
     @messages = @chat_room.messages.since(3.days.ago)
 
     # If there's no recent messages, get last 50
-    @messages = @chat_room.messages.limit(50) if @messages.blank?
+    @messages = @chat_room.messages.limit(50).reverse if @messages.blank?
 
     # Get the message ID of the last message in the list. This will be used in
     # the AJAX call to get more messages.
