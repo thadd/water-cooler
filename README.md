@@ -15,9 +15,9 @@ Installation
 ---
 
 * Make sure the required gems are installed ("rake gems").
-* Set up your database information in +config/database.yaml+.
+* Set up your database information in `config/database.yaml`.
 * Migrate your database.
-* Set up which services you want to use in +config/application.yml+.
+* Set up which services you want to use in `config/application.yml`.
 * Start the server and go
 
 Usage
