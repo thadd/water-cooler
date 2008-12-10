@@ -72,6 +72,15 @@ Bug reports
 
 Please submit bug reports via Lighthouse at http://thadd.lighthouseapp.com/projects/20676-water-cooler/overview.
 
+Known issues
+---
+
+Aside from the bugs that are already reported at Lighthouse, there are several known issues that don't really warrant their own bugs.
+
+* IE 6 Support - Currently Water Cooler doesn't work with IE 6. This is mostly because IE 6 is a lousy browser, but more specifically, the transparent PNG files don't work in IE 6. [Ticket #14](http://thadd.lighthouseapp.com/projects/20676/tickets/14) will probably fix most of the IE 6 issues, but I just don't see the value in wasting too much time on it.
+* Performance - Water Cooler is a bit inefficient. If you have 15 users, you're going to be getting about 20 requests per second. This is fine for most uses (it's designed for small software teams), but if you want to use Water Cooler to support a much larger audience or if you have real bandwidth/CPU concerns, it needs some enhancement in that area.
+* Stale users - There's no cleanup actions to speak of in Water Cooler. This means that if a user logs in once and never comes back, they will remain in all of the chat rooms they were in when they left. For more teams this isn't much of a issue, especially since admins and room owners can kick out the stale users, but if you're going to be using Water Cooler in an environment with a lot of transient users then this problem should be addressed.
+
 License
 --
 
